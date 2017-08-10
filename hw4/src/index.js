@@ -1,3 +1,5 @@
 'use strict';
 
-import './dom';
+import { init } from './box';
+
+init();
