@@ -20,7 +20,6 @@
     "webpack": "3.4.1"
   },
   "dependencies": {
-    "lodash": "4.17.4",
     "webpack-dev-server": "2.6.1"
   }
 }

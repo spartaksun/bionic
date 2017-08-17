@@ -7,18 +7,20 @@
 </head>
 <body>
 <div id="userPanel">
-    <span id="user">Hello, <span class="username"></span>!</span>
+    <span id="user">Hello, <span id="username"></span>!</span>
     <button id="loginButton">Login</button>
 </div>
 
-<div id="loginForm" class="modal">
+<div id="loginModal" class="modal">
 
     <div class="modal-content">
+        <div id="loginMessage" ></div>
+
         <span class="close" id="close">&times;</span>
-        <form>
-            <p><input type="text" placeholder="Type login"></p>
-            <p><input type="password" placeholder="Type password"></p>
-            <p><input type="submit" value="Login"></p>
+        <form id="loginForm">
+            <p><input type="text" id="login" placeholder="Type login"></p>
+            <p><input type="password" id="password" placeholder="Type password"></p>
+            <p><input type="button" id="submitButton" value="Login"></p>
         </form>
     </div>
 

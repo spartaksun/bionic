@@ -8,7 +8,7 @@ let closeButton = document.getElementById('close');
 
 let LoginForm = function () {
 
-    let isUser = (username, password) => {
+    const findUser = (username, password) => {
         for(let i = 0; i < userList.length; i++) {
             let user = userList[i];
             if(user.username === username && user.password === password) {
@@ -16,21 +16,38 @@ let LoginForm = function () {
             }
         }
 
-        return undefined;
+        return null;
     };
 
-    let loginFormBlock = document.getElementById('loginForm');
-    let usernameBlock = document.querySelector('#user .username');
+    const loginFormBlock = document.getElementById('loginModal');
+    const submitButton = document.getElementById('submitButton');
 
-    let show = () => {
+    const setMessage = (message, color = '#000') => {
+        const block = document.getElementById('loginMessage');
+
+        block.textContent = message;
+        block.style.color = color;
+    };
+
+    const resetMessage = () => {
+        setMessage('');
+    };
+
+    const show = () => {
         loginFormBlock.style.display = 'block';
     };
-    let close = () => {
+
+    const close = () => {
         loginFormBlock.style.display = 'none';
     };
 
+    const setFullname = (username) => {
+        document.getElementById('username').textContent = username;
+    };
+
     this.init = () => {
-        usernameBlock.textContent = 'Guest';
+        setFullname('Guest');
+        setMessage('Please fill login and passowrd');
 
         showLoginButton();
 
@@ -43,12 +60,28 @@ let LoginForm = function () {
             close();
             showLoginButton();
         });
+
+        submitButton.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const login = document.getElementById('login').value;
+            const password = document.getElementById('password').value;
+
+            let user = findUser(login, password);
+
+            if(user) {
+                setFullname(user.fullName);
+                resetMessage();
+                close();
+            } else {
+                setMessage('Invalid username or password!', 'red');
+            }
+        });
     };
 
     return {
         init: this.init
     };
-
 };
 
 function showLoginButton () {
