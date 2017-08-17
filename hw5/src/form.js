@@ -41,8 +41,8 @@ let LoginForm = function () {
         loginFormBlock.style.display = 'none';
     };
 
-    const setFullname = (username) => {
-        document.getElementById('username').textContent = username;
+    const setFullname = (fullname) => {
+        document.getElementById('username').textContent = fullname;
     };
 
     this.init = () => {
