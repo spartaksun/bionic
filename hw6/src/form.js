@@ -45,7 +45,7 @@ let LoginForm = function () {
         document.getElementById('username').textContent = fullname;
     };
 
-    this.init = () => {
+    const init = () => {
         setFullname('Guest');
         setMessage('Please fill login and passowrd');
 
@@ -80,7 +80,7 @@ let LoginForm = function () {
     };
 
     return {
-        init: this.init
+        init
     };
 };
 
