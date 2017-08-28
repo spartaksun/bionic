@@ -2,13 +2,18 @@
 
 import userList from './db/users.json';
 
-let loginButton = document.getElementById('loginButton');
-let closeButton = document.getElementById('close');
+class LoginForm {
 
+    constructor() {
+        this.loginButton = document.getElementById('loginButton');
+        this.closeButton = document.getElementById('close');
+        this.submitButton = document.getElementById('submitButton');
+        this.loginFormBlock = document.getElementById('loginModal');
+        this.loginMessage = document.getElementById('loginMessage');
+        this.usernameBlock = document.getElementById('username');
+    }
 
-let LoginForm = function () {
-
-    const findUser = (username, password) => {
+    findUser = (username, password) => {
         for(let i = 0; i < userList.length; i++) {
             let user = userList[i];
             if(user.username === username && user.password === password) {
@@ -19,78 +24,86 @@ let LoginForm = function () {
         return null;
     };
 
-    const loginFormBlock = document.getElementById('loginModal');
-    const submitButton = document.getElementById('submitButton');
-
-    const setMessage = (message, color = '#000') => {
-        const block = document.getElementById('loginMessage');
-
-        block.textContent = message;
-        block.style.color = color;
+    setMessage = (message, color = '#000') => {
+        this.loginMessage.textContent = message;
+        this.loginMessage.style.color = color;
     };
 
-    const resetMessage = () => {
-        setMessage('');
+    resetMessage  = () => {
+        this.setMessage('');
     };
 
-    const show = () => {
-        loginFormBlock.style.display = 'block';
+    initUserMessage = (user) => {
+        if(user) {
+            this.setFullname(user.fullName);
+            this.resetMessage();
+            this.close();
+        } else {
+            this.setMessage('Invalid username or password!', 'red');
+        }
     };
 
-    const close = () => {
-        loginFormBlock.style.display = 'none';
-    };
+    initSubmitButton = () => {
 
-    const setFullname = (fullname) => {
-        document.getElementById('username').textContent = fullname;
-    };
-
-    this.init = () => {
-        setFullname('Guest');
-        setMessage('Please fill login and passowrd');
-
-        showLoginButton();
-
-        loginButton.addEventListener('click', function () {
-            show();
-            hideLoginButton();
-        });
-
-        closeButton.addEventListener('click', () => {
-            close();
-            showLoginButton();
-        });
-
-        submitButton.addEventListener('click', (event) => {
+        const that = this;
+        this.submitButton.addEventListener('click', (event) => {
             event.preventDefault();
 
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
 
-            let user = findUser(login, password);
-
-            if(user) {
-                setFullname(user.fullName);
-                resetMessage();
-                close();
-            } else {
-                setMessage('Invalid username or password!', 'red');
-            }
+            this.initUserMessage(
+                that.findUser(login, password)
+            );
         });
     };
 
-    return {
-        init: this.init
+    show  = () => {
+        this.loginFormBlock.style.display = 'block';
     };
-};
 
-function showLoginButton () {
-    loginButton.style.display = 'block';
+    close = () => {
+        this.loginFormBlock.style.display = 'none';
+    };
+
+    setFullname = (name) => {
+        this.usernameBlock.textContent = name;
+    };
+
+    showLoginButton = () => {
+        this.loginButton.style.display = 'block';
+    };
+
+    hideLoginButton = () =>  {
+        this.loginButton.style.display = 'none';
+    };
+
+    initCloseButton = () =>  {
+        const that = this;
+        this.closeButton.addEventListener('click', () => {
+            that.close();
+            that.showLoginButton();
+        });
+    };
+
+    initLoginButton = () =>  {
+        this.showLoginButton();
+
+        const that = this;
+        this.loginButton.addEventListener('click', function () {
+            that.show();
+            that.hideLoginButton();
+        });
+    };
+
+    init = () => {
+        this.setFullname('Guest');
+        this.setMessage('Please fill login and passowrd');
+
+        this.initLoginButton();
+        this.initCloseButton();
+        this.initSubmitButton();
+    }
 }
-
-function hideLoginButton () {
-    loginButton.style.display = 'none';
-}
-
 
 export default new LoginForm();

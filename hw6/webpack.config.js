@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
@@ -7,7 +5,7 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist')
 	},
 	devtool: 'inline-source-map',
 	module: {
@@ -21,13 +19,17 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'jshint-loader'
+			},
+			{
+				test: /\.html$/,
+				exclude: /node_modules/,
+				loader: 'html-loader'
 			}
 		]
 	},
 	plugins: [
 		new CopyWebpackPlugin([
-			{ from: './src/index.html' },
-			{ from: './src/style.css' }
+			{ from: './src/index.html' }
 		])
 	],
 	devServer: {

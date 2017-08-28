@@ -40,6 +40,5 @@
     "sub"           : false,
     "validthis"     : true,
     "browser"       : true,
-    "globals"       : {},
-    "node"          : true
+    "globals"       : {}
 }
