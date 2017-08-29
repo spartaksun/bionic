@@ -2,11 +2,13 @@
   {
     "username": "alex",
     "password": "1111",
-    "fullName": "Alexey Belyakovskiy"
+    "fullName": "Alexey Belyakovskiy",
+    "role": "admin"
   },
   {
     "username": "smith",
     "password": "1234",
-    "fullName": "John Smith"
+    "fullName": "John Smith",
+    "role": "user"
   }
 ]
