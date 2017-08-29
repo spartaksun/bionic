@@ -3,28 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>JS Pre Production Homework</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
 <div id="userPanel">
     <span id="user">Hello, <span id="username"></span>!</span>
-    <button id="loginButton">Login</button>
 </div>
 
-<div id="loginModal" class="modal">
+<ul id="menu">
+    <li>
+        <a href="#/">Home</a>
+    </li>
+    <li>
+        <a href="#/about">About</a>
+    </li>
+    <li>
+        <a href="#/login">Login</a>
+    </li>
+</ul>
 
-    <div class="modal-content">
-        <div id="loginMessage" ></div>
-
-        <span class="close" id="close">&times;</span>
-        <form id="loginForm">
-            <p><input type="text" id="login" placeholder="Type login"></p>
-            <p><input type="password" id="password" placeholder="Type password"></p>
-            <p><input type="button" id="submitButton" value="Login"></p>
-        </form>
-    </div>
-
-</div>
+<div id="page"></div>
 
 <script src="./bundle.js"></script>
 </body>

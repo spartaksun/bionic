@@ -1,5 +1,9 @@
 'use strict';
 
-import loginForm from './form';
+import router from './router';
+import menu from './menu';
+// import auth from './auth';
 
-loginForm.init();
+
+router.init();
+menu.init();

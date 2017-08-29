@@ -21,7 +21,12 @@ module.exports = {
 				test: /\.js$/,
 				exclude: /node_modules/,
 				loader: 'jshint-loader'
-			}
+			},
+            {
+                test: /\.html$/,
+                exclude: /node_modules/,
+                loader: 'html-loader'
+            }
 		]
 	},
 	plugins: [
