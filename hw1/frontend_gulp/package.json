@@ -1,0 +1,19 @@
+{
+  "name": "Hw1",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "gulp && gulp watch",
+    "build": "gulp"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.8.0"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-uglify": "^3.0.0"
+  }
+}
