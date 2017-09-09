@@ -1,12 +1,12 @@
 {
-  "name": "Hw1",
+  "name": "js-pre-prod-homework-2-gulp",
   "version": "1.0.0",
-  "description": "",
+  "description": "Homework 2",
   "scripts": {
     "start": "gulp && gulp watch",
     "build": "gulp"
   },
-  "author": "",
+  "author": "A.Belyakovskiy",
   "license": "ISC",
   "dependencies": {
     "gulp": "^3.9.1",
