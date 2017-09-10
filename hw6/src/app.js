@@ -15,7 +15,7 @@ class App {
         const menu = new Menu(router, auth);
         menu.init();
 
-        router.onChangeRoute = function (url) {
+        router.handleChangeRoute = function (url) {
             userPanel.init();
             menu.init();
         };

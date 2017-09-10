@@ -23,7 +23,7 @@ class Router {
         this.renderPage(window.location.hash);
     }
 
-    onChangeRoute = () => {};
+    handleChangeRoute = () => {};
 
     renderPage (url) {
         if(!this.auth.isAccessGranted(url)) {
@@ -44,14 +44,14 @@ class Router {
         page.setAuth(auth);
         page.render();
 
-        this.onChangeRoute(url);
+        this.handleChangeRoute(url);
     };
 
     goToUrl = (url) => {
         window.location.href = url;
         this.renderPage(url);
 
-        this.onChangeRoute(url);
+        this.handleChangeRoute(url);
     };
 
     goHome = () => {
