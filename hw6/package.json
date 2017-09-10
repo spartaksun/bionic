@@ -1,7 +1,7 @@
 {
-  "name": "js-pre-prod-homework-5",
+  "name": "js-pre-prod-homework-6",
   "version": "1.0.0",
-  "description": "User login",
+  "description": "SPA with ACL",
   "main": "index.html",
   "scripts": {
     "start": "webpack --config webpack.config.js",

@@ -1,14 +1,13 @@
 'use strict';
 
-import Auth from '../../auth';
-
+import auth from '../../auth';
+import router from '../../router';
 
 class LoginForm {
 
     constructor() {
         this.submitButton = document.getElementById('submitButton');
         this.loginMessage = document.getElementById('loginMessage');
-        this.usernameBlock = document.getElementById('username');
     }
 
     setMessage (message, color = '#000') {
@@ -16,41 +15,25 @@ class LoginForm {
         this.loginMessage.style.color = color;
     }
 
-    resetMessage () {
-        this.setMessage('');
-    }
-
-    initUserMessage (user) {
-        if(user) {
-            this.setFullname(user.fullName);
-            this.resetMessage();
-        } else {
-            this.setMessage('Invalid username or password!', 'red');
-        }
-    }
-
     initSubmitButton () {
-
         this.submitButton.addEventListener('click', (event) => {
             event.preventDefault();
 
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
 
-            this.initUserMessage(
-                Auth.login(login, password)
-            );
+            const user = auth.login(login, password);
+
+            if(user) {
+                router.goHome();
+            } else {
+                this.setMessage('Invalid username or password!', 'red');
+            }
         });
     }
 
-    setFullname (name) {
-        this.usernameBlock.textContent = name;
-    }
-
     init () {
-        this.setFullname('Guest');
         this.setMessage('Please fill login and passowrd');
-
         this.initSubmitButton();
     }
 }

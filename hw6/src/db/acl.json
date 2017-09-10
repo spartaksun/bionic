@@ -1,0 +1,22 @@
+[
+  {
+  "route": "#/",
+  "access": "all"
+  },
+  {
+    "route": "#/admin",
+    "access": ["admin"]
+  },
+  {
+    "route": "#/about",
+    "access": ["admin", "user"]
+  },
+  {
+    "route": "#/login",
+    "access": ["unauthorized"]
+  },
+  {
+    "route": "#/logout",
+    "access": ["admin", "user"]
+  }
+]

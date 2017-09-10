@@ -10,12 +10,10 @@ class LoginPage extends Page {
         this.content = pageContent;
     }
 
-    render() {
-        super.render();
-
+    afterRender = () => {
         const loginForm = new LoginForm();
         loginForm.init();
-    }
+    };
 }
 
 const page = new LoginPage('#/login');
