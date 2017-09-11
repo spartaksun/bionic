@@ -11,7 +11,7 @@ class LoginPage extends Page {
     }
 
     afterRender = () => {
-        const loginForm = new LoginForm();
+        const loginForm = new LoginForm(this.auth);
         loginForm.init();
     };
 }

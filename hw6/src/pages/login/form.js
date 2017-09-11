@@ -1,11 +1,12 @@
 'use strict';
 
-import auth from '../../auth';
 import router from '../../router';
 
 class LoginForm {
 
-    constructor() {
+    constructor(auth) {
+        this.auth = auth;
+
         this.submitButton = document.getElementById('submitButton');
         this.loginMessage = document.getElementById('loginMessage');
     }
@@ -21,8 +22,7 @@ class LoginForm {
 
             const login = document.getElementById('login').value;
             const password = document.getElementById('password').value;
-
-            const user = auth.login(login, password);
+            const user = this.auth.login(login, password);
 
             if(user) {
                 router.goHome();
